@@ -1,0 +1,261 @@
+/* --- colors --- */
+:root {
+  --bg: #0a0606;
+  --panel: #160c0c;
+  --blood: #b3000c;
+  --blood-bright: #ff1a2a;
+  --bone: #e8dcc8;
+  --dim: #8c7b73;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top, #2a0707 0%, transparent 60%),
+    radial-gradient(ellipse at center, transparent 40%, #000 100%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--bone);
+  font-family: "Special Elite", "Courier New", monospace;
+}
+
+/* --- header --- */
+header {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 16px 8px;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-family: "Creepster", cursive;
+  font-weight: normal;
+  font-size: clamp(3rem, 12vw, 6rem);
+  letter-spacing: 4px;
+  color: var(--blood-bright);
+  text-shadow: 0 0 12px rgba(255, 0, 20, 0.6), 0 4px 0 #3a0000;
+  animation: flicker 5s infinite;
+}
+
+@keyframes flicker {
+  0%, 92%, 100% { opacity: 1; }
+  93% { opacity: 0.3; }
+  94% { opacity: 1; }
+  96% { opacity: 0.5; }
+  97% { opacity: 1; }
+}
+
+.tagline {
+  margin: 4px 0 24px;
+  color: var(--dim);
+}
+
+/* --- search bar --- */
+form {
+  display: flex;
+  gap: 8px;
+}
+
+input[type="search"] {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--bone);
+  background: var(--panel);
+  border: 2px solid #3a1414;
+  border-radius: 4px;
+}
+
+input[type="search"]:focus {
+  outline: none;
+  border-color: var(--blood-bright);
+  box-shadow: 0 0 10px rgba(255, 0, 20, 0.4);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+form button,
+#loadMore {
+  padding: 12px 22px;
+  font-family: "Creepster", cursive;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  color: var(--bone);
+  background: var(--blood);
+  border: none;
+  border-radius: 4px;
+}
+
+form button:hover,
+#loadMore:hover {
+  background: var(--blood-bright);
+}
+
+/* --- quick search chips --- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.chips button {
+  padding: 6px 14px;
+  color: var(--bone);
+  background: transparent;
+  border: 1px solid #4a1c1c;
+  border-radius: 999px;
+}
+
+.chips button:hover {
+  border-color: var(--blood-bright);
+  color: var(--blood-bright);
+}
+
+/* --- GIFs / Stickers tabs --- */
+.tabs {
+  display: inline-flex;
+  border: 1px solid #4a1c1c;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.tab {
+  padding: 8px 20px;
+  color: var(--dim);
+  background: transparent;
+  border: none;
+}
+
+.tab.active {
+  color: var(--bone);
+  background: var(--blood);
+}
+
+.hint {
+  margin: 14px 0 0;
+  font-size: 0.9rem;
+  color: var(--dim);
+}
+
+/* --- results --- */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+#heading {
+  font-family: "Creepster", cursive;
+  font-weight: normal;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  margin: 8px 0;
+  color: var(--bone);
+}
+
+#status:empty { display: none; }
+
+#status {
+  text-align: center;
+  color: var(--dim);
+  min-height: 1.2em;
+}
+
+#results {
+  columns: 4;
+  column-gap: 12px;
+}
+
+.gif {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 0;
+  border: none;
+  background: var(--panel);
+  break-inside: avoid;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.gif img {
+  display: block;
+  width: 100%;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.gif:hover img,
+.gif:focus-visible img {
+  transform: scale(1.03);
+  filter: sepia(0.4) hue-rotate(-30deg) saturate(1.6);
+}
+
+.gif:focus-visible {
+  outline: 3px solid var(--blood-bright);
+}
+
+#loadMore {
+  display: block;
+  margin: 24px auto;
+}
+
+#loadMore[hidden] {
+  display: none;
+}
+
+/* --- "Link copied!" popup --- */
+#toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translate(-50%, 20px);
+  padding: 12px 22px;
+  background: var(--blood);
+  color: var(--bone);
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(255, 0, 20, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--dim);
+  font-size: 0.8rem;
+}
+
+/* --- tablets and phones --- */
+@media (max-width: 900px) {
+  #results { columns: 3; }
+}
+
+@media (max-width: 600px) {
+  #results { columns: 2; }
+  form button { padding: 12px 16px; }
+}
+
+/* turn off the flicker for people who don't want motion */
+@media (prefers-reduced-motion: reduce) {
+  .title { animation: none; }
+  .gif img, #toast { transition: none; }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GifHunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylegift.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="title">GIFHUNT</h1>
+        <p class="tagline">Find the gifs you want... if you dare</p>
+
+        <form id="searchForm">
+            <input type="search" id="gifsearch" placeholder="Search the darkness..." aria-label="Search for GIFs">
+            <button type="submit">Hunt</button>
+        </form>
+
+        <div class="chips" id="chips">
+            <button type="button" data-word="zombie">zombie</button>
+            <button type="button" data-word="ghost">ghost</button>
+            <button type="button" data-word="scream">scream</button>
+            <button type="button" data-word="vampire">vampire</button>
+            <button type="button" data-word="creepy">creepy</button>
+            <button type="button" data-word="halloween">halloween</button>
+        </div>
+
+        <div class="tabs" role="tablist">
+            <button type="button" class="tab active" data-type="gifs" role="tab" aria-selected="true">GIFs</button>
+            <button type="button" class="tab" data-type="stickers" role="tab" aria-selected="false">Stickers</button>
+        </div>
+
+        <p class="hint">Click any GIF to copy its link</p>
+    </header>
+
+    <main>
+        <h2 id="heading">Trending</h2>
+        <p id="status" role="status"></p>
+        <div id="results"></div>
+        <button type="button" id="loadMore" hidden>Summon more</button>
+    </main>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <footer>Powered by GIPHY</footer>
+
+    <script src="javascriptgift.js"></script>
+</body>
+
+</html>
